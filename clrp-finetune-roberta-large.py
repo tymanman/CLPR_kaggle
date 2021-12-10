@@ -21,7 +21,7 @@ seed_everything(seed=Config.seed)
 kfold_df = pd.read_csv('/home/fcq/Li/nlp_learn/datasets/kaggle_CLPR/new_kfold.csv')
 aux_kfold_df = pd.read_csv('/home/fcq/Li/nlp_learn/datasets/kaggle_CLPR/kfold_parsed_annotated_by_all_models.csv')
 
-def create_optimizer(model):
+def create_optimizer(model):#为embedding层设置1e-5学习率；对于transformer层，1-24层，lr递增为5e-5；回归层和注意力层为默认1e-3
     named_parameters = list(model.named_parameters())    
     
     roberta_parameters = named_parameters[:389]    
